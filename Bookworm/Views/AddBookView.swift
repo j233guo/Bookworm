@@ -44,11 +44,7 @@ struct AddBookView: View {
                 }
                 
                 Section {
-                    Picker(selection: $rating, label: Text("Rating")) {
-                        ForEach(0..<6) {
-                            Text("\($0)")
-                        }
-                    }
+                    RatingView(rating: $rating)
                     TextEditor(text: $review)
                 } header: {
                     Text("Write a review")
