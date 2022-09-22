@@ -26,8 +26,13 @@ struct AddBookView: View {
         newBook.rating = Int16(rating)
         newBook.genre = genre
         newBook.review = review
+        newBook.dateAdded = Date.now
         try? moc.save()
         dismiss()
+    }
+    
+    var emptyTitleOrAuthor: Bool {
+        title == "" || author == ""
     }
     
     var body: some View {
@@ -56,6 +61,7 @@ struct AddBookView: View {
                     }, label: {
                         Text("Save")
                     })
+                    .disabled(emptyTitleOrAuthor)
                 }
             }
             .navigationTitle("Add a Book")
